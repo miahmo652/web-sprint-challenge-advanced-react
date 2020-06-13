@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
-
+import {useDarkMode} from "./hooks/useDarkMode.js";
 import "./App.css";
 
 function App() {
@@ -20,15 +20,26 @@ function App() {
   const removeFromCart = (plant) => {
     setCart(cart.filter((p) => p.id !== plant.id));
   };
-
+  const [darkMode, setDarkMode] = useDarkMode(false);
+  const toggleMode = e => {
+    e.preventDefault();
+    setDarkMode(!darkMode);
+  };
   return (
     <div>
       <Router>
         <nav className="container">
+        <div className="dark-mode__toggle">
+        <div
+          onClick={toggleMode}
+          className={darkMode ? 'toggle toggled' : 'toggle'}
+        />
+      </div>
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
           <ul className="steps">
+      
             <li>
               <NavLink exact to="/">
                 Plants
@@ -61,6 +72,8 @@ function App() {
         />
         <Route path="/checkout" component={CheckoutForm} />
       </Router>
+
+  
     </div>
   );
 }
