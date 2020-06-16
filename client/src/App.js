@@ -26,7 +26,7 @@ function App() {
     setDarkMode(!darkMode);
   };
   return (
-    <div>
+    <div className="anything">
       <Router>
         <nav className="container">
         <div className="dark-mode__toggle">

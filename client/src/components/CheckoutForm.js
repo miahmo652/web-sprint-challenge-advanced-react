@@ -25,7 +25,7 @@ const CheckoutForm = (props) => {
   };
 
   return (
-    <>
+    <div className="anything">
     
       <form onSubmit={handleSubmit}>
         <h2>Checkout Form</h2>
@@ -87,7 +87,7 @@ const CheckoutForm = (props) => {
           </p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
